@@ -20,6 +20,7 @@ public class RecyclerFragment extends Fragment {
 
     private List<Menu> menuList;
 
+
     public static Fragment newInstance() {
         return new RecyclerFragment();
     }
@@ -44,25 +45,25 @@ public class RecyclerFragment extends Fragment {
 
         menuList.add(new Menu(
                 3,
-                "Caring",
+                "NASA",
                 "Description 3"
         ));
 
         menuList.add(new Menu(
                 4,
-                "Caring",
+                "Physics",
                 "Description 4"
         ));
 
         menuList.add(new Menu(
                 5,
-                "Caring",
+                "Geometry",
                 "Description 5"
         ));
 
         menuList.add(new Menu(
                 6,
-                "Caring",
+                "Star Wars",
                 "Description 6"
         ));
 
