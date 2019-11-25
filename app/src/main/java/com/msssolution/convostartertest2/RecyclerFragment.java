@@ -18,6 +18,8 @@ import java.util.List;
 
 public class RecyclerFragment extends Fragment {
 
+    private List<Menu> menuList;
+
     public static Fragment newInstance() {
         return new RecyclerFragment();
     }
@@ -26,6 +28,43 @@ public class RecyclerFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recycler_view_fragment, container, false);
+
+        menuList = new ArrayList<>();
+        menuList.add(new Menu(
+               1,
+               "Awkward",
+               "Description 1"
+        ));
+
+        menuList.add(new Menu(
+                2,
+                "Caring",
+                "Description 2"
+        ));
+
+        menuList.add(new Menu(
+                3,
+                "Caring",
+                "Description 3"
+        ));
+
+        menuList.add(new Menu(
+                4,
+                "Caring",
+                "Description 4"
+        ));
+
+        menuList.add(new Menu(
+                5,
+                "Caring",
+                "Description 5"
+        ));
+
+        menuList.add(new Menu(
+                6,
+                "Caring",
+                "Description 6"
+        ));
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -46,7 +85,7 @@ public class RecyclerFragment extends Fragment {
             super(inflater.inflate(R.layout.card_view, container, false));
             cardView = itemView.findViewById(R.id.card_container);
             titleTextView = itemView.findViewById(R.id.item_title_text_view);
-
+            descTextView = itemView.findViewById(R.id.item_desc_text_view);
         }
     }
 
@@ -62,12 +101,18 @@ public class RecyclerFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
-
+            Menu menu = menuList.get(position);
+            holder.titleTextView.setText(menu.getTitle());
+            holder.descTextView.setText(menu.getDescription());
         }
 
         @Override
         public int getItemCount() {
-            return 10;
+            if(menuList != null){
+                return menuList.size();
+            } else{
+                return 0;
+            }
         }
     }
 }
