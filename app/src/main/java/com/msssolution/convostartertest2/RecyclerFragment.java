@@ -13,6 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerFragment extends Fragment {
 
+    public static Fragment newInstance() {
+        return new RecyclerFragment();
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

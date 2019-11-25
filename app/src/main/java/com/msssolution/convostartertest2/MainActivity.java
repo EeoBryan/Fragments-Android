@@ -9,6 +9,6 @@ public class MainActivity extends SingleFragment {
 
     @Override
     protected Fragment createFragment() {
-        return null;
+        return new RecyclerFragment().newInstance();
     }
 }
