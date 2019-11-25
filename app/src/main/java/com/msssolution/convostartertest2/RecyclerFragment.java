@@ -13,6 +13,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RecyclerFragment extends Fragment {
 
     public static Fragment newInstance() {
@@ -64,7 +67,7 @@ public class RecyclerFragment extends Fragment {
 
         @Override
         public int getItemCount() {
-            return 5;
+            return 10;
         }
     }
 }
