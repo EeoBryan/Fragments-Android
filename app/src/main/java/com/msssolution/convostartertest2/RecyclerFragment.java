@@ -19,7 +19,8 @@ import java.util.List;
 public class RecyclerFragment extends Fragment {
 
     private List<Menu> menuList;
-
+    public static ArrayList<String> titleArray;
+    public static ArrayList<String> descArray;
 
     public static Fragment newInstance() {
         return new RecyclerFragment();
@@ -30,42 +31,32 @@ public class RecyclerFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recycler_view_fragment, container, false);
 
+        titleArray = new ArrayList<>();
+        titleArray.add("Awkward");
+        titleArray.add("Caring");
+        titleArray.add("NASA");
+        titleArray.add("Physics");
+        titleArray.add("Geology");
+        titleArray.add("Star Wars");
+        titleArray.add("Star Trek");
+
+        descArray = new ArrayList<>();
+        descArray.add("Description 1");
+        descArray.add("Description 2");
+        descArray.add("Description 3");
+        descArray.add("Description 4");
+        descArray.add("Description 5");
+        descArray.add("Description 6");
+        descArray.add("Description 7");
+
         menuList = new ArrayList<>();
-        menuList.add(new Menu(
-               1,
-               "Awkward",
-               "Description 1"
-        ));
-
-        menuList.add(new Menu(
-                2,
-                "Caring",
-                "Description 2"
-        ));
-
-        menuList.add(new Menu(
-                3,
-                "NASA",
-                "Description 3"
-        ));
-
-        menuList.add(new Menu(
-                4,
-                "Physics",
-                "Description 4"
-        ));
-
-        menuList.add(new Menu(
-                5,
-                "Geometry",
-                "Description 5"
-        ));
-
-        menuList.add(new Menu(
-                6,
-                "Star Wars",
-                "Description 6"
-        ));
+        for(int i=0; i < titleArray.size(); i++){
+            menuList.add(new Menu(
+                    i,
+                    titleArray.get(i),
+                    descArray.get(i)
+            ));
+        }
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
