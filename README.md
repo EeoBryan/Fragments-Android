@@ -16,6 +16,7 @@ Goal for this project is to learn and to be exposed on how Fragment works in And
 
 
 ## USEFUL LINKS
+
 (Fragment) https://developer.android.com/guide/components/fragments
 (RecyclerView) https://developer.android.com/guide/topics/ui/layout/recyclerview
 (CardView) https://developer.android.com/guide/topics/ui/layout/cardview
