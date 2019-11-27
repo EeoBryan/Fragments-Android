@@ -1,14 +1,20 @@
 package com.msssolution.convostartertest2;
 
+import android.content.ClipData;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
@@ -85,15 +91,21 @@ public class RecyclerFragment extends Fragment {
         @Override
         public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(getActivity());
-
             return new RecyclerViewHolder(inflater, parent);
         }
 
         @Override
-        public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
-            Menu menu = menuList.get(position);
+        public void onBindViewHolder(@NonNull RecyclerViewHolder holder, final int position) {
+            final Menu menu = menuList.get(position);
             holder.titleTextView.setText(menu.getTitle());
             holder.descTextView.setText(menu.getDescription());
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Toast.makeText(getContext(), ""+menu.getTitle(), Toast.LENGTH_SHORT).show();
+                    openItemFragment(menu.getTitle());
+                }
+            });
         }
 
         @Override
@@ -105,4 +117,15 @@ public class RecyclerFragment extends Fragment {
             }
         }
     }
+
+    public void openItemFragment(String title){
+        ItemFragment itemFragment = ItemFragment.newInstance(title);
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, itemFragment);
+        transaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right,
+                R.anim.enter_from_right, R.anim.exit_to_right);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
 }
