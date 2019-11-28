@@ -1,4 +1,4 @@
-# ConvoStarterTest2
+# Fragments / Java
 
 A simple project that implements RecyclerView + CardView + Fragment
 
